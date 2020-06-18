@@ -20,11 +20,14 @@ public class Pay {
         BeanUtils.copyProperties(this, payed);
         payed.publishAfterCommit();
 
+    }
+
+    @PostUpdate
+    public void onPostUpdate() {
 
         PayCanceled payCanceled = new PayCanceled();
         BeanUtils.copyProperties(this, payCanceled);
         payCanceled.publishAfterCommit();
-
 
     }
 
