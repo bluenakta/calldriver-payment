@@ -18,7 +18,7 @@ public class PolicyHandler{
     public void wheneverCanceled_PayCancel(@Payload Canceled canceled){
 
         if(canceled.isMe()){
-            Pay pay = new Pay();
+            Pay pay = pr.findByCallId(canceled.getId());
             pay.setCallId(canceled.getId());
             pay.setPayStatus("Canceled");
 
